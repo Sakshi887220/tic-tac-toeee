@@ -104,7 +104,25 @@ display_board(d)
 while(True):
     if player == 1:   # Condition for which player to move
         print(user_1 , "Please select a cell from 1,2...9 where you want to put " , user_1_char)
-        
+        place = input()
+        ls = ['1','2','3','4','5','6','7','8','9']    # Input number must be one to them
+        flag1 = 1 
+        flag2 = 1
+        while(flag1 == 1 or flag2 == 1):
+            flag1 = 1 
+            flag2 = 1
+            if place not in ls:    # Condition for place to in above list
+                print("You have choose not choose form 1 to 9 . Please choosen from 1 - 9")
+                place = input("Try again")
+                continue
+            else:
+                flag1 = 0
+            place = int(place)
+            if d[place] != ' ':   # Condition for than place to be unoccupied
+                print("This place is already occupied")
+                place = input("Try again")
+                continue
+            else:
                 flag2 = 0
         d[place] = user_1_char
         display_board(d)
